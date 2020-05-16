@@ -1,0 +1,22 @@
+use_bpm 120
+live_loop :ping do
+  sample :elec_ping, amp: 0.1
+  sleep 1
+end
+
+N1 = :C2
+N2 = N1 + 2
+N3 = N1 - 2
+N4 = N1 - 4
+melody = [N1, N1, N2, N2, N1, N1, N3, N3, N3, N1, N4, N4, N3, N1]
+
+live_loop :melo1 do
+  sample :bd_808, amp: 2, rate: 0.8, rpitch: 2
+  sleep 1
+  i = 0
+  14.times do
+    play melody[i]
+    i += 1
+    sleep 0.5
+  end
+end
